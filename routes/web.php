@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Route::resource('books', BookController::class);
-
+Route::get('/books', fn() => 'タスク一覧（準備中）')->name('books.index');
 //Route::get('/ranking', [BookController::class, 'ranking'])->name('');
 
 //Route::resource('genres', GenreController::class);
