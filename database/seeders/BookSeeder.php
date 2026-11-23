@@ -124,7 +124,7 @@ class BookSeeder extends Seeder
                 'user_id' => $user->id,
                 'title' => '火花 ',
                 'author' => '又吉直樹',
-                'image_url' => 'https://placehold.co/200x300/e2e8f0/475569?text=10',
+                'image_url' => 'https://placehold.co/200x300/e2e8f0/475569?text=9',
                 'published_date' => '2015-03-11',
                 'description' => '売れないお笑い芸人の主人公が、天才的な才能と独特なこだわりを持つ先輩芸人と出会い、笑いとは何かを追い求めながら葛藤し成長していく青春小説',
             ]
