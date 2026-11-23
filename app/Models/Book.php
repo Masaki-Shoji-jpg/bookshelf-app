@@ -18,8 +18,8 @@ class Book extends Model
         'description',
         'author',
         'isbn',
-        'cover_image',
-        'published_at',
+        'image_url',
+        'published_date',
     ];
 
     public function user(): BelongsTo
