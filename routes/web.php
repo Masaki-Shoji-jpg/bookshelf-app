@@ -16,6 +16,7 @@ use App\Http\Controllers\BookController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware(['auth'])->group(function () {
 Route::resource('books', BookController::class);
 
 Route::get('/ranking', [BookController::class, 'ranking'])->name('ranking.index');
@@ -29,7 +30,7 @@ Route::post('/books/{book}/reviews', [ReviewController::class, 'store'])->name('
 
 Route::get('/fovorites', [FavoriteController::class, 'index'])->name('favorites.index');
 Route::post('/books/{book}/favorite', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
-
+});
 
 
 Route::get('/', function () {return view('welcome');});
