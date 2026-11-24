@@ -43,7 +43,7 @@ class BookRequest extends FormRequest
             'author.max' => '著者名は50文字以内で入力してください',
 
             'isbn.required' => 'ISBNコードを入力してください',
-            'isbn.unique' => 'このISBNコードはすでに入力されています',
+            'isbn.unique' => 'このISBNコードはすでに登録されています',
             'isbn.digits' => 'ISBNコードは13桁の数字で入力してください',
 
             'genres.required' => 'ジャンルを1つ以上選択してください',

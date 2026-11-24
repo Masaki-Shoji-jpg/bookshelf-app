@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('comment');
             $table->unsignedTinyInteger('rating');
             $table->timestamps();
-            $table->unique(['book_id', 'user_id']);
         });
     }
 
