@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\BookRequest;
+use App\Models\User;
 use App\Models\Book;
 use App\Models\Genre;
 class BookController extends Controller
@@ -17,10 +18,8 @@ class BookController extends Controller
      */
     public function index(): View
     {
-        $books = Book::latest()->paginate(10);
+        $books = Book::withAvg('reviews', 'rating')->paginate(10);
         return view('books.index',compact('books'));
-
-        //reviews_avg_rating　追加
     }
 
     /**
@@ -55,8 +54,8 @@ class BookController extends Controller
     public function show($id): View
     {
         $book = Book::findOrFail($id);
-
-        return view('books.show',compact('book'));
+        $reviews = $book->reviews()->with('user')->latest()->get();
+        return view('books.show',compact('book','reviews'));
     }
 
     /**
@@ -100,5 +99,12 @@ class BookController extends Controller
         }
         $book->delete();
         return redirect()->route('books.index');
+    }
+
+    public function ranking(){
+        $rankedBooks = Book::withAvg('reviews', 'rating')->withCount('reviews')
+                ->orderByDesc('reviews_avg_rating')->get();
+
+        return view('ranking.index',compact('rankedBooks'));
     }
 }
