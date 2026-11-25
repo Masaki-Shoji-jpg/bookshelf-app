@@ -17,7 +17,17 @@ class Review extends Model
         'rating',
     ];
 
-    public function review_likes(): BelongsToMany
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function book(): BelongsTo
+    {
+        return $this->belongsTo(Book::class);
+    }
+
+    public function likedByUsers(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'review_likes')->withTimestamps();
     }
